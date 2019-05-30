@@ -4,9 +4,16 @@ import ReactDOM from "react-dom";
 import "./styles.css";
 
 function Header() {
-  let navigation = ["Home", "About", "Contact"];
-
-  return <h1>My first react.js App</h1>;
+  let navigation = ["Github", "LinkedIn", "Personal Site"];
+  navigation = navigation.map(function(item) {
+    return <li> {item} </li>;
+  });
+  return (
+    <>
+      <h1>My first react.js App</h1>
+      {navigation}
+    </>
+  );
 }
 
 function Body() {
