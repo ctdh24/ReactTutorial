@@ -1,12 +1,17 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { Route, Link, BrowserRouter as Router } from "react-router-dom";
 
 import "./styles.css";
 
 function Header() {
-  let navigation = ["Github", "LinkedIn", "Personal Site"];
+  let navigation = ["Home", "About", "Contact"];
   navigation = navigation.map(function(item) {
-    return <li> {item} </li>;
+    return (
+      <li>
+        <Link to={item}>{item}</Link>
+      </li>
+    );
   });
   return (
     <>
@@ -16,8 +21,26 @@ function Header() {
   );
 }
 
+function Home() {
+  return <span>this is the homepage</span>;
+}
+function About() {
+  return <span>this is the aboutpage</span>;
+}
+function Contact() {
+  return <span>this is the contactpage</span>;
+}
+
 function Body() {
-  return <span>This is my firt react.js app.</span>;
+  return (
+    <Router>
+      <>
+        <Route path={"/home"} component={Home} />
+        <Route path="/about" component={About} />
+        <Route path="/contact" component={Contact} />
+      </>
+    </Router>
+  );
 }
 
 function App() {
